@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:MVVM"
         mc:Ignorable="d"
         Title="MVVM" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <StackPanel Name="mainStackPanel" DataContext="{Binding ElementName=clientesComboBox, Path=SelectedItem}">
+        <ComboBox Name="clientesComboBox" ItemsSource="{Binding}" DisplayMemberPath="nombre"/>
+
+        <TextBlock>Id</TextBlock>
+        <TextBox Name="idTextBox" Text="{Binding id}"/>
+
+        <TextBlock>Nombre</TextBlock>
+        <TextBox Name="nombreTextBox" Text="{Binding nombre}"/>
+
+        <TextBlock>Apellido</TextBlock>
+        <TextBox Name="apellidoTexBox" Text="{Binding apellido}"/>
+
+        <Button Name="modificarButton">Modificar</Button>
+    </StackPanel>
 </Window>

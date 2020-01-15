@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,13 @@ namespace MVVM
         public MainWindow()
         {
             InitializeComponent();
+            Tema6Entities contexto = new Tema6Entities();
+
+            contexto.CLIENTES.Load();
+
+            clientesComboBox.DataContext = contexto.CLIENTES.Local;
         }
+
+
     }
 }
