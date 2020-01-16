@@ -25,13 +25,14 @@ namespace MVVM
         public MainWindow()
         {
             InitializeComponent();
-            Tema6Entities contexto = new Tema6Entities();
+            this.DataContext = new MainWindowVM();
 
-            contexto.CLIENTES.Load();
-
-            clientesComboBox.DataContext = contexto.CLIENTES.Local;
+            clientesComboBox.ItemsSource = (this.DataContext as MainWindowVM).ListaClientes;
         }
 
-
+        private void ModificarBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            (this.DataContext as MainWindowVM).Modificar();
+        }
     }
 }

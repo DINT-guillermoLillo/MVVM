@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:MVVM"
         mc:Ignorable="d"
         Title="MVVM" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New"
+                        Executed="ModificarBinding_Executed"/>
+    </Window.CommandBindings>
+
 
     <StackPanel Name="mainStackPanel" DataContext="{Binding ElementName=clientesComboBox, Path=SelectedItem}">
-        <ComboBox Name="clientesComboBox" ItemsSource="{Binding}" DisplayMemberPath="nombre"/>
+        <ComboBox Name="clientesComboBox" ItemsSource="{Binding ListaClientes}" DisplayMemberPath="nombre"/>
 
         <TextBlock>Id</TextBlock>
         <TextBox Name="idTextBox" Text="{Binding id}"/>
@@ -19,6 +24,6 @@
         <TextBlock>Apellido</TextBlock>
         <TextBox Name="apellidoTexBox" Text="{Binding apellido}"/>
 
-        <Button Name="modificarButton">Modificar</Button>
+        <Button Name="modificarButton" Command="ApplicationCommands.New">Modificar</Button>
     </StackPanel>
 </Window>
